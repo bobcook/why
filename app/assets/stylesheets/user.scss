@@ -1,0 +1,31 @@
+  .navbar-head{
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#4c4c4c),to(#111))
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: none;
+      background: #e8e8e8;
+      color: #333;
+      font: normal normal normal 13px/1.5 "Helvetica Neue",Arial,Helvetica,"Liberation Sans",FreeSans,sans-serif;
+  }
+
+  .navbar-brand {
+    color: whitesmoke !important;
+  }
+
+  form input, form textarea {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  form .row, form .input {
+    padding: 5px;
+  }
+
+  .navbar-head .user-icon {
+    width: 40px;
+    border-radius: 23px;
+    height: 40px;
+  }

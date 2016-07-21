@@ -1,0 +1,54 @@
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= email_field_tag 'email', current_user.email, readonly: true, placeholder: 'Email', input_html: { class: 'form-control'} %>
+      </div>
+      <div class='col-md-6'>
+        <%= text_field_tag 'user[:username]', current_user.username, placeholder: 'Username', input_html: { class: 'form-control'} %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= f.text_field :first_name, placeholder: 'First name', input_html: { class: 'form-control'} %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :last_name, placeholder: 'Last name', input_html: { class: 'form-control'} %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= f.text_field :contact, maxlength: 10, placeholder: 'Contact number', input_html: { class: 'form-control'} %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :city, placeholder: 'City' %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <%= f.text_area :bio, placeholder: 'Short description about yourself...', input_html: { class: 'form-control'} %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <%= f.text_area :interests, placeholder: 'Interest', input_html: { class: 'form-control'} %>
+      </div>
+      <div class='col-md-6'>
+        <%#= f.text_field :interests, multiple: true, placeholder: 'Interest', input_html: { class: 'form-control'} %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= f.file_field :image %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<br>
+<%= link_to 'Change password', edit_user_registration_path %>
