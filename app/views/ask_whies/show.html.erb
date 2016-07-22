@@ -1,0 +1,41 @@
+<div class='col-md-12'>
+  <div class='col-md-4'>
+    <div class='why-card'>
+      <h3>WHY?</h3>
+      <div class='content'>
+        <%= @ask_why.question %>
+      </div>
+      <div class='options'>
+        <%= link_to 'Like', '#-' %>&nbsp
+        <%= link_to 'Un-like', '#-' %>&nbsp
+        <%= link_to 'Super-like', '#-' %>&nbsp
+      </div>
+    </div>
+
+    <% @ask_why.posts.each do |post| %>
+      <div class='why-card-posts'>
+        <div class='user'>
+          <b><%= post.user.profile.full_name %></b>
+        </div>
+        <div class='content'>
+          <%= post.content %>
+        </div>
+        <div class='image'>
+          <%= image_tag(post.image.url(:medium)) if post.image.present? %>
+        </div>
+        <div class='options'>
+          <% if post.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% else %>
+            <%= link_to 'Like', '#-' %>&nbsp
+            <%= link_to 'Un-like', '#-' %>&nbsp
+            <%= link_to 'Super-like', '#-' %>&nbsp
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  
+    <%= render 'posts/form', post: @ask_why.posts.new %>
+  </div>
+</div>

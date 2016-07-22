@@ -112,6 +112,8 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.14)
     flutie (2.0.0)
+    font-awesome-rails (4.6.3.1)
+      railties (>= 3.2, < 5.1)
     formulaic (0.3.0)
       activesupport
       capybara
@@ -274,9 +276,6 @@ GEM
     title (0.0.7)
       i18n
       rails (>= 3.1)
-    turbolinks (5.0.0)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -315,6 +314,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   flutie
+  font-awesome-rails
   formulaic
   high_voltage
   honeybadger
@@ -347,7 +347,6 @@ DEPENDENCIES
   suspenders
   timecop
   title
-  turbolinks
   uglifier
   web-console
   webmock

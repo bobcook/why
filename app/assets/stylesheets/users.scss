@@ -25,7 +25,29 @@
   }
 
   .navbar-head .user-icon {
+    padding: 5px;
     width: 40px;
     border-radius: 23px;
     height: 40px;
+  }
+
+  .profile_image {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .img-preview{
+    background-position: center, center;
+    background-size: cover; 
+    border: 3px solid #fff;
+    border-radius: 50%;
+    height: 150px !important;
+    margin: 0 auto;
+    width: 150px;
+    -webkit-border-radius: 50%
+  }
+
+  .change_image {
+    cursor: pointer;
+    width: 30px;
   }

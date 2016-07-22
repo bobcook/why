@@ -11,3 +11,4 @@
 /public/assets
 /tags
 /tmp/*
+config/database.yml

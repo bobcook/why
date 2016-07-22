@@ -1,0 +1,21 @@
+<%= simple_form_for(post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.hidden_field :ask_why_id, value: post.ask_why_id %>
+
+  <div class='row'>
+    <%= f.text_area :content, class: 'form-control count_length', rows: 3, placeholder: 'Share your reason....', maxlength: 100 %>
+    <span class='char-left'>Character left: &nbsp<b><span class='char-length'>100</span></b>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= f.file_field :image, accept: "image/*" %>
+      <!-- , onchange: "showimagepreview(this)" -->
+    </div>
+    <div class='col-md-6'>
+      <!-- <img class='post-img-preview'></img> -->
+    </div>
+    <div class='col-md-3'>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

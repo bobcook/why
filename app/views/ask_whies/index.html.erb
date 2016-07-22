@@ -1,0 +1,17 @@
+<h3><%= link_to 'Ask Why', new_ask_why_path %></h3>
+
+<div class='col-md-12'>
+  <% @ask_whies.each do |why| %>
+    <div class='col-md-3 why-card'>
+      <h3>WHY?</h3>
+      <div class='content'>
+        <%= why.question %>
+      </div>
+      <div class='options'>
+        <% if why.user_id != current_user.id %>
+          <%= link_to 'Reply', ask_why_path(why) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

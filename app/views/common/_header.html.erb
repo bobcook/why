@@ -7,9 +7,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li><a href="<%= ask_whies_path %>">Why?</a></li>
+          <li><a href="<%= my_asked_why_ask_whies_path %>">My asked why?</a></li>
+          <!-- <li><a href="<%= posts_path %>">All Posts</a></li> -->
+          <li><a href="<%= user_posts_posts_path %>">My Posts</a></li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <%= image_tag(current_user.profile.image.url, class: 'user-icon') %><%= current_user.username %>
+              <%= image_tag(current_user.user_image, class: 'user-icon') %><%= current_user.username %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -24,3 +29,15 @@
     </div>
   </div>
 </nav>
+
+<% unless user_page? %>
+  <div class='search-nav'>
+    <div class='col-md-3'>
+    </div>
+    <div class='col-md-6'>
+      <%= form_tag '#', method: :post do |f| %>
+        <%= text_field_tag :search, '', placeholder: 'Search user with name or any why?' , class: 'search_field form-control' %>
+      <% end %>
+    </div>
+  </div><br>
+<% end %>
