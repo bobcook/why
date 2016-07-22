@@ -66,3 +66,4 @@ gem 'high_voltage'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
 gem 'bootstrap-sass', '~> 3.3.1'
+gem "font-awesome-rails"

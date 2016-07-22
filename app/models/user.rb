@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :profile
 
-  after_create :user_profile
+  # after_create :user_profile
   
   def user_profile
     build_profile.save

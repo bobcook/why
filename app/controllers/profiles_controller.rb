@@ -1,14 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
-  def show
-  end
+  def show;end
 
-  def edit
-  end
+  def edit;end
 
   def update
-    if @profile.update(profile_params)
+    if update_user && @profile.update(profile_params)
       redirect_to edit_profile_path, notice: 'Profile was successfully updated.'
     else
       render :edit
@@ -17,7 +15,7 @@ class ProfilesController < ApplicationController
 
   private
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = current_user.profile
     end
 
     def profile_params
