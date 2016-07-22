@@ -1,0 +1,12 @@
+<%= simple_form_for(@ask_why) do |f| %>
+  <%= f.error_notification %>
+
+  <div class='row'>
+    <%= f.text_area :question, class: 'form-control count_length', rows: 3, placeholder: 'Look-up for your why?', maxlength: 100 %>
+    <span class='char-left'>Character left: &nbsp<b><span class='char-length'>100</span></b>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

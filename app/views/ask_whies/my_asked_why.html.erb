@@ -1,0 +1,16 @@
+<h3><%= link_to 'Ask Why', new_ask_why_path %></h3>
+
+<div class='col-md-12'>
+  <% @my_whies.each do |why| %>
+    <div class='col-md-3 why-card'>
+      <h3>WHY?</h3>
+      <div class='content'>
+        <%= why.question %>
+      </div>
+      <div class='options'>
+        <%= link_to 'Edit', edit_ask_why_path(why) %>&nbsp
+        <%= link_to 'Destroy', ask_why_path(why), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+</div>

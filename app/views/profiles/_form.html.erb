@@ -1,50 +1,50 @@
 <%= simple_form_for(@profile) do |f| %>
   <%= f.error_notification %>
 
-
   <div class='col-md-12 profile_image'>
     <img class='img-preview' style="background-image: url( <%= current_user.user_image %> )"></img>
     <br>
     <img class='change_image' src='/assets/camera-icon.png' data-toggle="tooltip" data-placement="right" title='Click to change image'></img>
-  </div><br><br>
+  </div>
+  <br><br>
 
   <div class="form-inputs">
     <div class='row'>
       <div class='col-md-6'>
-        <%= email_field_tag 'email', current_user.email, readonly: true, placeholder: 'Email', input_html: { class: 'form-control'} %>
+        <%= email_field_tag 'email', current_user.email, readonly: true, placeholder: 'Email' %>
       </div>
       <div class='col-md-6'>
-        <%= text_field_tag 'user[username]', current_user.username, placeholder: 'Username', input_html: { class: 'form-control'} %>
+        <%= text_field_tag 'user[username]', current_user.username, placeholder: 'Username', class: 'form-control' %>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6'>
-        <%= f.text_field :first_name, placeholder: 'First name', input_html: { class: 'form-control'} %>
+        <%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
       </div>
       <div class='col-md-6'>
-        <%= f.text_field :last_name, placeholder: 'Last name', input_html: { class: 'form-control'} %>
+        <%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6'>
-        <%= f.text_field :contact, maxlength: 10, placeholder: 'Contact number', input_html: { class: 'form-control'} %>
+        <%= f.text_field :contact, maxlength: 10, placeholder: 'Contact number', class: 'form-control' %>
       </div>
       <div class='col-md-6'>
-        <%= f.text_field :city, placeholder: 'City' %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-md-12'>
-        <%= f.text_area :bio, placeholder: 'Short description about yourself...', input_html: { class: 'form-control'} %>
+        <%= f.text_field :city, placeholder: 'City', class: 'form-control' %>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-12'>
-        <%= f.text_area :interests, placeholder: 'Interest', input_html: { class: 'form-control'} %>
+        <%= f.text_area :bio, placeholder: 'Short description about yourself...', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-12'>
+        <%= f.text_area :interests, placeholder: 'Interest', class: 'form-control' %>
       </div>
     </div>
 
@@ -61,26 +61,3 @@
 <% end %>
 <br>
 <%= link_to 'Change password', edit_user_registration_path %>
-
-<script>
-  $(document).on('ready page:load', function () {
-    // On click to camera icon
-    $('.change_image').click(function(){
-      $("#profile_image").click();
-    });
-  });
-
-  function showimagepreview(input) {
-    if (input.files && input.files[0]) {
-      var filerdr = new FileReader();
-      filerdr.onload = function(e) {
-        img = e.target.result;
-        div = $('.img-preview')
-        div.css({
-          "background-image": "url("+img+")",
-        });
-      }
-      filerdr.readAsDataURL(input.files[0]);
-    }
-  }
-</script>

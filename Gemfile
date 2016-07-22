@@ -21,7 +21,6 @@ gem "sprockets-es6"
 gem "suspenders"
 gem "title"
 gem "uglifier"
-gem 'turbolinks'
 
 group :development do
   gem "listen"
