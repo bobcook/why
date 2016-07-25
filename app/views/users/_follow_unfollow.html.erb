@@ -1,0 +1,5 @@
+<% if params[:action] == 'follow' %>
+  <%= link_to 'Unfollow', unfollow_path(user_id: @id), remote: true, method: :post %>
+<% elsif params[:action] == 'unfollow' %>
+  <%= link_to 'Follow', follow_path(user_id: @id), remote: true, method: :post %>
+<% end %>

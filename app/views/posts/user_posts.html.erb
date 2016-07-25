@@ -3,12 +3,15 @@
 <div class='col-md-12'>
   <% @posts.each do |post| %>
     <div class='col-md-3 why-card'>
+
       <div class='content'>
         <%= post.content %>
       </div>
+
       <div class='image'>
         <%= image_tag(post.image.url(:medium)) if post.image.present? %>
       </div>
+
       <div class='options'>
         <%= link_to 'Edit', edit_post_path(post) %>&nbsp
         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
