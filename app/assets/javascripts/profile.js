@@ -24,12 +24,10 @@ function showimagepreview(input) {
 
 $(document).on('keyup','#search',function(){
   var query = $(this).val();
-  if (query.length > 3){
-    $.ajax({
-      method: 'post',
-      data: { query: query },
-      url: "/search"
-    })
-    $('.char-length').html(length);
-  }
+  $.ajax({
+    method: 'post',
+    data: { query: query },
+    url: "/search"
+  })
+  $('.char-length').html(length);
 });
