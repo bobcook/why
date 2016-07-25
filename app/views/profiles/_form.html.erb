@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class='col-md-12 profile_image'>
-    <img class='img-preview' style="background-image: url( <%= current_user.user_image %> )"></img>
+    <img class='img-preview' style="background-image: url( <%= current_user.user_image(:medium) %> )"></img>
     <br>
     <img class='change_image' src='/assets/camera-icon.png' data-toggle="tooltip" data-placement="right" title='Click to change image'></img>
   </div>
