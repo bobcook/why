@@ -1,14 +1,17 @@
 <div class='col-md-12'>
   <div class='col-md-4'>
     <div class='why-card'>
+
       <div class='asked-by'>
         <%= image_tag(@ask_why.user.user_image(:original)) %><br>
         <span><b><%= @ask_why.user.full_name %></b></span>
       </div>
+
       <div class='content'>
         <%= @ask_why.question %>
         <span><%= image_tag('/assets/why.png') %></span>
       </div>
+
       <div class='options'>
         <%= link_to 'Like', '#-' %>&nbsp
         <%= link_to 'Un-like', '#-' %>&nbsp
@@ -18,18 +21,23 @@
 
     <% @ask_why.posts.each do |post| %>
       <div class='why-card-posts'>
+
         <div class='user'>
-          <b><%= post.user.full_name %></b>
+          <%= image_tag(post.user.user_image(:thumb)) %>
+          <span><b><%= post.user.full_name %></b></span>
         </div>
+
         <div class='content'>
           <%= post.content %>
         </div>
+
         <div class='image'>
           <%= image_tag(post.image.url(:medium)) if post.image.present? %>
         </div>
+
         <div class='options'>
-          <% if post.user_id == current_user.id %>
-            <%= link_to 'Edit', edit_post_path(post) %>
+          <% if created_by_user?(post.user) %>
+            <%= link_to 'Edit', edit_post_path(post) %>&nbsp
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% else %>
             <%= link_to 'Like', '#-' %>&nbsp

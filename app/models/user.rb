@@ -14,16 +14,32 @@ class User < ApplicationRecord
 
   after_create :user_profile
 
+  def add_follower uid
+    followers.push uid.to_s
+  end
+
+  def add_following uid
+    following.push uid.to_s
+  end
+
   def full_name
     [profile.first_name.capitalize, profile.last_name.capitalize].join(' ')
   end
 
-  def user_profile
-    build_profile.save
+  def remove_follower uid
+    followers.delete uid.to_s
+  end
+
+  def remove_following uid
+    following.delete uid.to_s
   end
 
   def user_image type
     profile.image.url(type)
+  end
+
+  def user_profile
+    build_profile.save
   end
 
   # def username_content_type
