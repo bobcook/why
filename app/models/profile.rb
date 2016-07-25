@@ -8,7 +8,4 @@ class Profile < ApplicationRecord
     }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  def full_name
-    [first_name, last_name].join(' ')
-  end
 end

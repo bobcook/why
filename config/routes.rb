@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "dashboard#home"
 
+  post "/search", to: 'dashboard#search', as: :search_why
+
   devise_for :users
   devise_scope :user do
   end

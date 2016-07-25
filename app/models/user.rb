@@ -13,13 +13,17 @@ class User < ApplicationRecord
   # validates_length_of :username, minimum: 4, maximum: 16
 
   after_create :user_profile
-  
+
+  def full_name
+    [profile.first_name.capitalize, profile.last_name.capitalize].join(' ')
+  end
+
   def user_profile
     build_profile.save
   end
 
-  def user_image
-    profile.image.url
+  def user_image type
+    profile.image.url(type)
   end
 
   # def username_content_type

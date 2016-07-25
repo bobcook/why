@@ -1,0 +1,25 @@
+<div class='col-md-12'>
+  <% if @whies.present? %>
+    <% @whies.each do |why| %>
+      <div class='col-md-3 why-card'>
+        <div class='asked-by'>
+          <%= image_tag(why.user.user_image(:original)) %><br>
+          <span><b><%= why.user.full_name %></b></span>
+        </div>
+        <div class='content'>
+          <%= why.question %>
+          <span><%= image_tag('/assets/why.png') %></span>
+        </div>
+        <div class='options'>
+          <% if why.user_id != current_user.id %>
+            <%= link_to 'Reply', ask_why_path(why) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class='no-result-found'>
+      <%= image_tag '/assets/no-record-found.jpg' %>
+    </div>
+  <% end %>
+</div>
