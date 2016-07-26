@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    [profile.first_name.capitalize, profile.last_name.capitalize].join(' ')
+    [profile.first_name.try(:capitalize), profile.last_name.try(:capitalize)].join(' ')
   end
 
   def remove_follower uid

@@ -3,5 +3,6 @@
   <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% else %>
   <%= link_to (post.likes.include?(current_user.id.to_s) ? 'Unike' : 'Like'), like_post_path(post), remote: true %>&nbsp
+  (<%= post.likes.length %>)
   <%#= link_to 'Un-like', '#-' %>&nbsp
 <% end %>

@@ -1,5 +1,6 @@
 class AskWhiesController < ApplicationController
   before_action :set_ask_why, only: [:show, :edit, :update, :destroy, :like, :dislike, :super_like]
+  include AskWhiesHelper
 
   def create
     @ask_why = current_user.ask_whies.new(ask_why_params)
@@ -16,10 +17,18 @@ class AskWhiesController < ApplicationController
     redirect_to ask_whies_url, notice: 'Ask why was successfully destroyed.'
   end
 
+  def dislike
+    dislike_why
+  end
+
   def edit;end
 
   def index
     @ask_whies = AskWhy.all
+  end
+
+  def like
+    like_why
   end
 
   def my_asked_why
@@ -32,39 +41,16 @@ class AskWhiesController < ApplicationController
 
   def show;end
 
+  def super_like
+    super_like_why
+  end
+
   def update
     if @ask_why.update(ask_why_params)
       redirect_to @ask_why, notice: 'Ask why was successfully updated.'
     else
       render :edit
     end
-  end
-
-  def like
-    if @ask_why.likes.include?(current_user.id.to_s)
-      @ask_why.likes.delete current_user.id.to_s
-    else
-      @ask_why.likes.push current_user.id.to_s
-    end
-    @ask_why.save
-  end
-
-  def dislike
-    if @ask_why.dislikes.include?(current_user.id.to_s)
-      @ask_why.dislikes.delete current_user.id.to_s
-    else
-      @ask_why.dislikes.push current_user.id.to_s
-    end
-    @ask_why.save
-  end
-
-  def super_like
-    if @ask_why.super_likes.include?(current_user.id.to_s)
-      @ask_why.super_likes.delete current_user.id.to_s
-    else
-      @ask_why.super_likes.push current_user.id.to_s
-    end
-    @ask_why.save
   end
 
   private
