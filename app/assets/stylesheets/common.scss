@@ -1,3 +1,19 @@
 .search_field {
   border-radius: 20px;
 }
+
+.no-result-found {
+  text-align: center;
+  padding: 20px;
+}
+
+.asked-by img {
+  background-position: center, center;
+  background-size: cover; 
+  border: 3px solid #fff;
+  border-radius: 50%;
+  height: 100px !important;
+  margin: 0 auto;
+  width: 100px;
+  -webkit-border-radius: 50%
+}

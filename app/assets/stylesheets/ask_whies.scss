@@ -1,0 +1,62 @@
+.why-card {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: gray;
+  background-color: whitesmoke;
+  margin: 40px;
+  padding: 15px;
+  text-align: center;
+}
+
+.why-card .content {
+  margin: 5px 0px;
+}
+
+.why-card .image img {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.why-card .option {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.why-card-posts {
+  border: 1px solid;
+  border-radius: 10px;
+  border-color: gray;
+  background-color: whitesmoke;
+  margin: 40px;
+  padding: 15px;
+  text-align: center;  
+}
+
+.why-card-posts .content {
+  margin: 5px 0px;
+}
+
+.why-card-posts .image img {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.why-card-posts .option {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.content img {
+  width: 25px;
+}
+
+.why-card-posts .user img {
+  background-position: center, center;
+  background-size: cover; 
+  border: 3px solid #fff;
+  border-radius: 50%;
+  height: 50px !important;
+  margin: 0 auto;
+  width: 50px;
+  -webkit-border-radius: 50%
+}

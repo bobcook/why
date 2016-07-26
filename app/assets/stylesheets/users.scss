@@ -1,53 +1,60 @@
-  .navbar-head{
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#4c4c4c),to(#111))
-  }
+.navbar-head {
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#4c4c4c),to(#111))
+}
 
-  body {
-    -webkit-font-smoothing: antialiased;
-      -webkit-text-size-adjust: none;
-      background: #e8e8e8;
-      color: #333;
-      font: normal normal normal 13px/1.5 "Helvetica Neue",Arial,Helvetica,"Liberation Sans",FreeSans,sans-serif;
-  }
+body {
+  -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    background: #e8e8e8;
+    color: #333;
+    font: normal normal normal 13px/1.5 "Helvetica Neue",Arial,Helvetica,"Liberation Sans",FreeSans,sans-serif;
+}
 
-  .navbar-brand {
-    color: whitesmoke !important;
-  }
+.navbar-brand {
+  color: whitesmoke !important;
+}
 
-  form input, form textarea {
-    width: 100%;
-    border-radius: 5px;
-    padding: 5px;
-  }
+.navbar-brand img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: -5px;
+}
 
-  form .row, form .input {
-    padding: 5px;
-  }
+form input, form textarea {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+}
 
-  .navbar-head .user-icon {
-    padding: 5px;
-    width: 40px;
-    border-radius: 23px;
-    height: 40px;
-  }
+form .row, form .input {
+  padding: 5px;
+}
 
-  .profile_image {
-    text-align: center;
-    padding: 10px;
-  }
+.navbar-head .user-icon {
+  padding: 5px;
+  width: 40px;
+  border-radius: 23px;
+  height: 40px;
+}
 
-  .img-preview{
-    background-position: center, center;
-    background-size: cover; 
-    border: 3px solid #fff;
-    border-radius: 50%;
-    height: 150px !important;
-    margin: 0 auto;
-    width: 150px;
-    -webkit-border-radius: 50%
-  }
+.profile_image {
+  text-align: center;
+  padding: 10px;
+}
 
-  .change_image {
-    cursor: pointer;
-    width: 30px;
-  }
+.img-preview {
+  background-position: center, center;
+  background-size: cover; 
+  border: 3px solid #fff;
+  border-radius: 50%;
+  height: 150px !important;
+  margin: 0 auto;
+  width: 150px;
+  -webkit-border-radius: 50%
+}
+
+.change_image {
+  cursor: pointer;
+  width: 30px;
+}

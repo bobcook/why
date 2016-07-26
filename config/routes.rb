@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root "dashboard#home"
 
+  post "/search", to: 'dashboard#search', as: :search_why
+
+  post "/follow", to: 'users#follow', as: :follow
+  post "/unfollow", to: 'users#unfollow', as: :unfollow
+
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

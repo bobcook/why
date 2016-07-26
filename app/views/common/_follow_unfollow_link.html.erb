@@ -1,0 +1,7 @@
+<div class='options opt_<%= why.user.id %>'>
+  <% if already_following?(why.user.id) %>
+    <%= link_to 'Unfollow', unfollow_path(user_id: why.user.id), remote: true, method: :post %>
+  <% else %>
+    <%= link_to 'Follow', follow_path(user_id: why.user.id), remote: true, method: :post %>
+  <% end %>
+</div>

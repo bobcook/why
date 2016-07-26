@@ -3,12 +3,25 @@
 <div class='col-md-12'>
   <% @ask_whies.each do |why| %>
     <div class='col-md-3 why-card'>
-      <h3>WHY?</h3>
+
+      <div class='asked-by'>
+        <%= image_tag(why.user.user_image(:original)) %><br>
+        <span><b><%= why.user.full_name %></b></span>
+        <% unless created_by_user?(why.user) %>
+          <%= render partial: 'common/follow_unfollow_link', locals: { why: why } %>
+        <% end %>
+      </div>
+
       <div class='content'>
         <%= why.question %>
+        <span><%= image_tag('/assets/why.png') %></span>
       </div>
+
       <div class='options'>
-        <% if why.user_id != current_user.id %>
+        <% unless created_by_user?(why.user) %>
+          <%= link_to 'Like', '#-' %>&nbsp
+          <%= link_to 'Un-like', '#-' %>&nbsp
+          <%= link_to 'Super-like', '#-' %>&nbsp
           <%= link_to 'Reply', ask_why_path(why) %>
         <% end %>
       </div>
