@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     else
       @post.likes.push current_user.id.to_s
     end
-    @post.save  
+    @post.save
   end
 
   def new
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def user_posts
-    @posts = current_user.posts    
+    @posts = current_user.posts
   end
 
   private

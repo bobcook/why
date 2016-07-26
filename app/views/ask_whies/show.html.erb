@@ -38,7 +38,9 @@
         </div>
       </div>
     <% end %>
-  
-    <%= render 'posts/form', post: @ask_why.posts.new %>
+
+    <% unless created_by_user?(@ask_why.user) %>
+      <%= render 'posts/form', post: @ask_why.posts.new %>
+    <% end %>
   </div>
 </div>

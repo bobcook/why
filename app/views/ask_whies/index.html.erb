@@ -1,6 +1,6 @@
 <h3><%= link_to 'Ask Why', new_ask_why_path %></h3>
 
-<div class='col-md-12'>
+<div class='col-md-12 all-why-cards'>
   <% @ask_whies.each do |why| %>
     <div class='col-md-3 why-card'>
 
@@ -13,12 +13,18 @@
       </div>
 
       <div class='content'>
-        <%= why.question %>
-        <span><%= image_tag('/assets/why.png') %></span>
+        <a href="/ask_whies/<%= why.id %>">
+          <%= why.question %>
+          <span><%= image_tag('/assets/why.png') %></span>
+        </a>
       </div>
 
       <% unless created_by_user?(why.user) %>
         <%= render partial: 'common/why_card_options', locals: { why: why } %>
+
+        <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
+          <%= link_to 'Reply', ask_why_path(why) %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
