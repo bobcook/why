@@ -1,0 +1,1 @@
+$('.post_card_<%= @post.id %>').html("<%= escape_javascript render partial: 'common/post_card_options', locals: { post: @post } %>")

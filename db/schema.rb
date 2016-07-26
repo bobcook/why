@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725111810) do
+ActiveRecord::Schema.define(version: 20160726100933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,11 @@ ActiveRecord::Schema.define(version: 20160725111810) do
   create_table "ask_whies", force: :cascade do |t|
     t.text     "question"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "likes",       default: [],              array: true
+    t.string   "dislikes",    default: [],              array: true
+    t.string   "super_likes", default: [],              array: true
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -48,9 +51,10 @@ ActiveRecord::Schema.define(version: 20160725111810) do
     t.integer  "video_file_size"
     t.datetime "video_updated_at"
     t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "ask_why_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "likes",              default: [],              array: true
   end
 
   create_table "profiles", force: :cascade do |t|

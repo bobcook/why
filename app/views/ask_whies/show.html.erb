@@ -12,11 +12,9 @@
         <span><%= image_tag('/assets/why.png') %></span>
       </div>
 
-      <div class='options'>
-        <%= link_to 'Like', '#-' %>&nbsp
-        <%= link_to 'Un-like', '#-' %>&nbsp
-        <%= link_to 'Super-like', '#-' %>&nbsp
-      </div>
+      <% unless created_by_user?(@ask_why.user) %>
+        <%= render partial: 'common/why_card_options', locals: { why: @ask_why } %>
+      <% end %>
     </div>
 
     <% @ask_why.posts.each do |post| %>
@@ -35,15 +33,8 @@
           <%= image_tag(post.image.url(:medium)) if post.image.present? %>
         </div>
 
-        <div class='options'>
-          <% if created_by_user?(post.user) %>
-            <%= link_to 'Edit', edit_post_path(post) %>&nbsp
-            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% else %>
-            <%= link_to 'Like', '#-' %>&nbsp
-            <%= link_to 'Un-like', '#-' %>&nbsp
-            <%= link_to 'Super-like', '#-' %>&nbsp
-          <% end %>
+        <div class='options post_card_<%= post.id %>'>
+          <%= render 'common/post_card_options', post: post %>
         </div>
       </div>
     <% end %>

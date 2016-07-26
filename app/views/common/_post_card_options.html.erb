@@ -1,0 +1,7 @@
+<% if created_by_user?(post.user) %>
+  <%= link_to 'Edit', edit_post_path(post) %>&nbsp
+  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% else %>
+  <%= link_to (post.likes.include?(current_user.id.to_s) ? 'Unike' : 'Like'), like_post_path(post), remote: true %>&nbsp
+  <%#= link_to 'Un-like', '#-' %>&nbsp
+<% end %>

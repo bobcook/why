@@ -1,0 +1,11 @@
+<div class='options why_card_<%= why.id %>'>
+  <%= link_to (why.likes.include?(current_user.id.to_s) ? 'Unike' : 'Like'), like_ask_why_path(why), remote: true %>&nbsp
+
+  <%= link_to (why.dislikes.include?(current_user.id.to_s) ? 'Undo- dislike' : 'Dislike'), dislike_ask_why_path(why), remote: true %>&nbsp
+
+  <%= link_to (why.super_likes.include?(current_user.id.to_s) ? 'Undo-super-like' : 'Super-like'), super_like_ask_why_path(why), remote: true %>&nbsp
+
+  <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
+    <%= link_to 'Reply', ask_why_path(why) %>
+  <% end %>
+</div>

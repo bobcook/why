@@ -17,11 +17,19 @@ Rails.application.routes.draw do
     collection do
       get 'my_asked_why'
     end
+    member do
+      get 'like'
+      get 'dislike'
+      get 'super_like'
+    end
   end
 
   resources :posts do
     collection do
       get 'user_posts'
+    end
+    member do
+      get 'like'
     end
   end
 

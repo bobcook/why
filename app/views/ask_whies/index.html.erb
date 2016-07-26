@@ -17,14 +17,9 @@
         <span><%= image_tag('/assets/why.png') %></span>
       </div>
 
-      <div class='options'>
-        <% unless created_by_user?(why.user) %>
-          <%= link_to 'Like', '#-' %>&nbsp
-          <%= link_to 'Un-like', '#-' %>&nbsp
-          <%= link_to 'Super-like', '#-' %>&nbsp
-          <%= link_to 'Reply', ask_why_path(why) %>
-        <% end %>
-      </div>
+      <% unless created_by_user?(why.user) %>
+        <%= render partial: 'common/why_card_options', locals: { why: why } %>
+      <% end %>
     </div>
   <% end %>
 </div>
