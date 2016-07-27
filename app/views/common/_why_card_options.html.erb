@@ -7,4 +7,6 @@
 
   <%= link_to (why.super_likes.include?(current_user.id.to_s) ? 'Undo-super-like' : 'Super-like'), super_like_ask_why_path(why), remote: true %>&nbsp
   <%= why.super_likes.length%>
+
+  <%= link_to (why.reshare.include?(current_user.id.to_s) ? 'Shared' : 'Reshare'), reshare_ask_why_path(why), remote: true %>
 </div>

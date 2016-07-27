@@ -19,6 +19,9 @@
 
         <% unless created_by_user?(why.user) %>
           <%= render partial: 'common/why_card_options', locals: { why: why } %>
+          <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
+            <%= link_to 'Reply', ask_why_path(why) %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

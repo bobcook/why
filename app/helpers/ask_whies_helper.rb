@@ -5,7 +5,7 @@ module AskWhiesHelper
   end
 
   def dislike_why
-	if @ask_why.dislikes.include?(current_user.id.to_s)
+	  if @ask_why.dislikes.include?(current_user.id.to_s)
       @ask_why.dislikes.delete current_user.id.to_s
     else
       @ask_why.dislikes.push current_user.id.to_s
@@ -24,6 +24,15 @@ module AskWhiesHelper
       @ask_why.super_likes.delete current_user.id.to_s if @ask_why.super_likes.include?(current_user.id.to_s)
     end
     @ask_why.save  	
+  end
+
+  def reshare_why
+    if @ask_why.reshare.include?(current_user.id.to_s)
+      @ask_why.reshare.delete current_user.id.to_s
+    else
+      @ask_why.reshare.push current_user.id.to_s
+    end
+    @ask_why.save  
   end
 
   def super_like_why

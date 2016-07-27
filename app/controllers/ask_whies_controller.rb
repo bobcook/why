@@ -1,10 +1,9 @@
 class AskWhiesController < ApplicationController
-  before_action :set_ask_why, only: [:show, :edit, :update, :destroy, :like, :dislike, :super_like]
+  before_action :set_ask_why, only: [:show, :edit, :update, :destroy, :like, :dislike, :super_like, :reshare]
   include AskWhiesHelper
 
   def create
     @ask_why = current_user.ask_whies.new(ask_why_params)
-
     if @ask_why.save
       redirect_to my_asked_why_ask_whies_path, notice: 'Ask why was successfully created.'
     else
@@ -39,6 +38,10 @@ class AskWhiesController < ApplicationController
     @ask_why = AskWhy.new
   end
 
+  def reshare
+    reshare_why
+  end
+
   def show;end
 
   def super_like
@@ -57,6 +60,10 @@ class AskWhiesController < ApplicationController
 
     def ask_why_params
       params.require(:ask_why).permit(:question)
+    end
+
+    def content_includes_why?
+      ask_why_params[:question].downcase.include?('why')    
     end
 
     def set_ask_why
