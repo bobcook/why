@@ -1,31 +1,66 @@
-<h3><%= link_to 'Ask Why', new_ask_why_path %></h3>
+<% @ask_whies.each do |why| %>
+  <li class="media list-group-item p-a">
+  <a class="media-left" href="#">
+  <%= image_tag(why.user.user_image(:original), class: 'media-object img-circle') %>
+  </a>
+  <div class="media-body">
+    <div class="media-heading">
+      <small class="pull-right text-muted">4 min</small>
+      <h5><%= why.user.full_name %></h5>
+    </div>
 
-<div class='col-md-12 all-why-cards'>
-  <% @ask_whies.each do |why| %>
-    <div class='col-md-3 why-card'>
+    <p><%= why.question %></p>
 
-      <div class='asked-by'>
-        <%= image_tag(why.user.user_image(:original)) %><br>
-        <span><b><%= why.user.full_name %></b></span>
-        <% unless created_by_user?(why.user) %>
-          <%= render partial: 'common/follow_unfollow_link', locals: { why: why } %>
-        <% end %>
+    <div class="media-body-inline-grid" data-grid="images">
+      <div style="display: none">
+        <img data-action="zoom" data-width="1050" data-height="700" src="/assets/unsplash_1.jpg">
       </div>
 
-      <div class='content'>
-        <a href="/ask_whies/<%= why.id %>">
-          <%= why.question %>
-          <span><%= image_tag('/assets/why.png') %></span>
-        </a>
+      <div style="display: none">
+        <img data-action="zoom" data-width="640" data-height="640" src="/assets/instagram_1.jpg">
       </div>
 
+      <div style="display: none">
+        <img data-action="zoom" data-width="640" data-height="640" src="/assets/instagram_13.jpg">
+      </div>
+
+      <div style="display: none">
+        <img data-action="zoom" data-width="1048" data-height="700" src="/assets/unsplash_2.jpg">
+      </div>
+    </div>
+    <div class="why_card_options">
       <% unless created_by_user?(why.user) %>
-        <%= render partial: 'common/why_card_options', locals: { why: why } %>
+        <%= render partial: 'common/why_card_options', locals: { why: why } %>&nbsp;
         <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
-          <%= link_to 'Reply', ask_why_path(why) %>
+          <%= link_to 'Reply', ask_why_path(why) %>&nbsp;
           <%= why.posts.count %>
         <% end %>
       <% end %>
     </div>
-  <% end %>
-</div>
+    <ul class="media-list m-b">
+      <li class="media">
+        <a class="media-left" href="#">
+          <img
+            class="media-object img-circle"
+            src="/assets/avatar-fat.jpg">
+        </a>
+        <div class="media-body">
+          <strong>Jacon Thornton: </strong>
+          Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
+        </div>
+      </li>
+      <li class="media">
+        <a class="media-left" href="#">
+          <img
+            class="media-object img-circle"
+            src="/assets/avatar-mdo.png">
+        </a>
+        <div class="media-body">
+          <strong>Mark Otto: </strong>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        </div>
+      </li>
+    </ul>
+  </div>
+  </li>
+<% end %>

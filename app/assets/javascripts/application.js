@@ -13,5 +13,9 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.min
+//= require chart
+//= require toolkit
+//= require custom
 // require turbolinks
 //= require_tree .

@@ -13,11 +13,10 @@
     <%= render 'common/header' %>
   </header>
 
-  <body class="<%= body_class %>">
-    <div class='container'>
+  <body class="<%= @body_class %>">
       <%= render "flashes" -%>
       <%= yield %>
-    </div>
+
 
     <%= render "javascript" %>
     <%= render "css_overrides" %>

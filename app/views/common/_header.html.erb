@@ -1,44 +1,69 @@
-<nav class="navbar navbar-default navbar-head" role="navigation">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top app-navbar">
+  <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">
-        <%= image_tag "why_lrg_logo_transparent.png", {height: 70} %>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">
+        <img src="/assets/brand-white.png" alt="brand">
       </a>
     </div>
+    <div class="navbar-collapse collapse" id="navbar-collapse-main">
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><a href="<%= ask_whies_path %>">Why?</a></li>
-          <li><a href="<%= my_asked_why_ask_whies_path %>">My asked why?</a></li>
-          <li><a href="<%= user_posts_posts_path %>">My Posts</a></li>
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <%= image_tag(current_user.user_image(:thumb), class: 'user-icon') %><%= current_user.username %>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="<%= edit_profile_path(current_user.profile) %>">Account</a></li>
-              <li><a href="<%= destroy_user_session_path %>" data: { method='delete' } >Logout</a></li>
-            </ul>
+        <ul class="nav navbar-nav hidden-xs">
+          <li>
+            <a href="../index.html">Home</a>
           </li>
-        <% else %>
-          <li><a href="<%= new_user_session_path %>">Login</a></li>
-        <% end %>
-      </ul>
-    </div>
+          <li class="active">
+            <a href="../profile/index.html">Profile</a>
+          </li>
+          <li>
+            <a data-toggle="modal" href="#msgModal">Messages</a>
+          </li>
+          <li>
+            <a href="../docs/index.html">Docs</a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
+          <li >
+            <a class="app-notifications" href="../notifications/index.html">
+              <span class="icon icon-bell"></span>
+            </a>
+          </li>
+          <li>
+            <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
+              <%= image_tag(current_user.user_image(:thumb), class: 'img-circle') %>
+            </button>
+          </li>
+        </ul>
+
+        <form class="navbar-form navbar-right app-search" role="search">
+          <div class="form-group">
+            <%= form_tag '#-', method: :post do |f| %>
+              <%= text_field_tag :search, '', placeholder: 'Search user with name or any why?' , class: 'search_field form-control',data: {action: 'grow'} %>
+            <% end %>
+          </div>
+        </form>
+
+        <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../profile/index.html">Profile</a></li>
+          <li><a href="../notifications/index.html">Notifications</a></li>
+          <li><a data-toggle="modal" href="#msgModal">Messages</a></li>
+          <li><a href="../docs/index.html">Docs</a></li>
+          <li><a href="#" data-action="growl">Growl</a></li>
+          <li><a href="../login/index.html">Logout</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav hidden">
+          <li><a href="<%= edit_profile_path(current_user.profile) %>">Account</a></li>
+          <li><a href="../login/index.html">Logout</a></li>
+        </ul>
+      </div>
   </div>
 </nav>
 
-<% unless user_page? %>
-  <div class='search-nav'>
-    <div class='col-md-3'>
-    </div>
-    <div class='col-md-6'>
-      <%= form_tag '#-', method: :post do |f| %>
-        <%= text_field_tag :search, '', placeholder: 'Search user with name or any why?' , class: 'search_field form-control' %>
-      <% end %>
-    </div>
-  </div><br>
-<% end %>
