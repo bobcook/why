@@ -8,7 +8,7 @@
         <%= image_tag(why.user.user_image(:original)) %><br>
         <span><b><%= why.user.full_name %></b></span>
         <% unless created_by_user?(why.user) %>
-          <%= render partial: 'common/follow_unfollow_link', locals: { why: why } %>(<%= why.user.followers.count %>)
+          <%= render partial: 'common/follow_unfollow_link', locals: { why: why } %>
         <% end %>
       </div>
 
@@ -21,9 +21,9 @@
 
       <% unless created_by_user?(why.user) %>
         <%= render partial: 'common/why_card_options', locals: { why: why } %>
-
         <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
           <%= link_to 'Reply', ask_why_path(why) %>
+          <%= why.posts.count %>
         <% end %>
       <% end %>
     </div>

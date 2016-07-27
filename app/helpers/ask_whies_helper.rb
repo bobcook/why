@@ -36,4 +36,17 @@ module AskWhiesHelper
     end
     @ask_why.save  	
   end
+
+
+  def why_likes(why)
+    why.likes.include?(current_user.id.to_s) ? 'Unike' : 'Like'
+  end
+
+  def why_dislikes(why)
+    why.dislikes.include?(current_user.id.to_s) ? 'Undo-dislike' : 'Dislike'
+  end
+
+  def why_super_likes(why)
+    why.super_likes.include?(current_user.id.to_s) ? 'Undo-super-like' : 'Super-like'
+  end
 end
