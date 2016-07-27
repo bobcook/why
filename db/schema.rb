@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 20160727075247) do
     t.integer  "video_file_size"
     t.datetime "video_updated_at"
     t.integer  "user_id"
+    t.integer  "ask_why_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.integer  "ask_why_id"
     t.string   "likes",              default: [],              array: true
   end
 

@@ -1,1 +1,1 @@
-$('.options.opt_<%= @id %>').html("<%= escape_javascript render partial: 'users/follow_unfollow' %>")
+$('.options.opt_<%= @id %>').html("<%= escape_javascript render partial: 'users/follow_unfollow' , locals: { followers: @followers } %>")

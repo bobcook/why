@@ -23,7 +23,7 @@ module AskWhiesHelper
       @ask_why.dislikes.delete current_user.id.to_s if @ask_why.dislikes.include?(current_user.id.to_s)
       @ask_why.super_likes.delete current_user.id.to_s if @ask_why.super_likes.include?(current_user.id.to_s)
     end
-    @ask_why.save  	
+    @ask_why.save
   end
 
   def reshare_why
@@ -43,6 +43,19 @@ module AskWhiesHelper
       @ask_why.likes.delete current_user.id.to_s if @ask_why.likes.include?(current_user.id.to_s)
       @ask_why.dislikes.delete current_user.id.to_s if @ask_why.dislikes.include?(current_user.id.to_s)
     end
-    @ask_why.save  	
+    @ask_why.save
+  end
+
+
+  def why_likes(why)
+    why.likes.include?(current_user.id.to_s) ? 'Unike' : 'Like'
+  end
+
+  def why_dislikes(why)
+    why.dislikes.include?(current_user.id.to_s) ? 'Undo-dislike' : 'Dislike'
+  end
+
+  def why_super_likes(why)
+    why.super_likes.include?(current_user.id.to_s) ? 'Undo-super-like' : 'Super-like'
   end
 end

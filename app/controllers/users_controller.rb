@@ -1,20 +1,23 @@
 class UsersController < ApplicationController
+  include UsersHelper
+  before_filter :set_user_id, only: [:follow, :unfollow]
+  after_filter :count_followers, only: [:follow, :unfollow]
 
   def follow
-    @id = params[:user_id]
-    current_user.add_following @id
-    current_user.save
-    user = User.find(@id)
-    user.add_follower current_user.id
-    user.save
+    follow_user(@id)
   end
 
   def unfollow
-    @id = params[:user_id]
-    current_user.remove_following @id
-    current_user.save
-    user = User.find(@id)
-    user.remove_follower current_user.id
-    user.save
+    unfollow_user(@id)
   end
+
+  private
+
+    def count_followers
+      @followers = User.find(@id).followers.count    
+    end
+
+    def set_user_id
+      @id = params[:user_id]
+    end
 end
