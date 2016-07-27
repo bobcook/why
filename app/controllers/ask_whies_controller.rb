@@ -1,6 +1,6 @@
 class AskWhiesController < ApplicationController
-  before_action :set_ask_why, only: [:show, :edit, :update, :destroy, :like, :dislike, :super_like]
   include AskWhiesHelper
+  before_action :set_ask_why, only: [:show, :edit, :update, :destroy, :like, :dislike, :super_like]
 
   def create
     @ask_why = current_user.ask_whies.new(ask_why_params)

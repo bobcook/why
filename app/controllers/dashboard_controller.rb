@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-include ApplicationHelper
 
   def home;end
 

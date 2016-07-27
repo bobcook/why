@@ -3,4 +3,4 @@
 <% elsif params[:action] == 'unfollow' %>
   <%= link_to 'Follow', follow_path(user_id: @id), remote: true, method: :post %>
 <% end %>
-(<%= followers.count %>)
+(<%= followers %>)
