@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get 'like'
       get 'dislike'
       get 'super_like'
+      get 'reshare'
     end
   end
 

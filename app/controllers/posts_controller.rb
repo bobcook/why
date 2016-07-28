@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  include PostsHelper
+
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
 
   def create
@@ -23,12 +25,7 @@ class PostsController < ApplicationController
   end
 
   def like
-    if @post.likes.include?(current_user.id.to_s)
-      @post.likes.delete current_user.id.to_s
-    else
-      @post.likes.push current_user.id.to_s
-    end
-    @post.save
+    like_post
   end
 
   def new

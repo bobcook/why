@@ -1,10 +1,12 @@
 <div class='options why_card_<%= why.id %>'>
-  <%= link_to (why.likes.include?(current_user.id.to_s) ? 'Unike' : 'Like'), like_ask_why_path(why), remote: true %>&nbsp
-  <%= why.likes.length%>
+  <%= link_to (why_likes(why)), like_ask_why_path(why), remote: true %>&nbsp
+  <%= why.likes.count %>
 
-  <%= link_to (why.dislikes.include?(current_user.id.to_s) ? 'Undo- dislike' : 'Dislike'), dislike_ask_why_path(why), remote: true %>&nbsp
-  <%= why.dislikes.length%>
+  <%= link_to (why_dislikes(why)), dislike_ask_why_path(why), remote: true %>&nbsp
+  <%= why.dislikes.count %>
 
-  <%= link_to (why.super_likes.include?(current_user.id.to_s) ? 'Undo-super-like' : 'Super-like'), super_like_ask_why_path(why), remote: true %>&nbsp
-  <%= why.super_likes.length%>
+  <%= link_to (why_super_likes(why)), super_like_ask_why_path(why), remote: true %>&nbsp
+  <%= why.super_likes.count %>
+
+  <%= link_to (why.reshare.include?(current_user.id.to_s) ? 'Shared' : 'Reshare'), reshare_ask_why_path(why), remote: true %>
 </div>
