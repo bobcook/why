@@ -1,10 +1,10 @@
 $('#new_ask_why').submit(function(ev) {
     ev.preventDefault();
-    if ($(this).find('textarea').val().toLowerCase().indexOf('why') >= 0) {
+    if ($(this).find('input[type=text]').val().toLowerCase().indexOf('why') >= 0) {
       this.submit();
     }
     else {
-      $('.error-msg').html('* Must include one why')
+      $('#why_error_message span').html('(* Must include one why)').css("color","#FF0000")
       return false;
     }
 });

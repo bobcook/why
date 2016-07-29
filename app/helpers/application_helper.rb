@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def search_query query
     @whies = User.joins(:profile).where('profiles.first_name LIKE ? OR profiles.last_name LIKE ?', '%'+query+'%', '%'+query+'%').collect(&:ask_whies)
-    @whies << AskWhy.where('question LIKE ?', '%'+query+'%')
+    @whies << AskWhy.where('question LIKE ?', '%'+query+'%').order(created_at: :desc)
     @whies = @whies.flatten.uniq
     return @whies
   end

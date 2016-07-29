@@ -1,18 +1,22 @@
-<h2>Resend confirmation instructions</h2>
+<div class="container-fluid container-fill-height">
+  <div class="container-content-middle">
+    <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "m-x-auto text-center app-login-form"}) do |f| %>
+      <%= f.error_notification %>
+      <%= f.full_error :unlock_token %>
+      <a href="../index.html" class="app-brand m-b-lg">
+        <img src="/assets/brand.png" alt="brand">
+      </a>
+      <h5>Resend unlock instructions</h5>
+      <div class="form-group">
+       <%= f.input :email, required: true, autofocus: true, input_html: { class: 'form-control'} %>
+      </div>
 
-<div class="col-md-4">
-  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-    <%= f.error_notification %>
-    <%= f.full_error :confirmation_token %>
-
-    <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true, input_html: { class: 'form-control'} %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Resend confirmation instructions", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
+      <div class="m-b-lg">
+        <%= f.button :submit, "Resend unlock instructions", class: 'btn btn-primary' %>
+      </div>
+      <footer class="screen-login">
+        <%= render "users/shared/links" %>
+      </footer>
+    <% end %>
+  </div>
 </div>

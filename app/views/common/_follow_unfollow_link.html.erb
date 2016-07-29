@@ -1,8 +1,8 @@
-<div class='options opt_<%= why.user.id %>'>
-  <% if already_following?(why.user.id) %>
-    <%= link_to 'Unfollow', unfollow_path(user_id: why.user.id), remote: true, method: :post %>
+<div class='options opt_<%= user.id %>'>
+  <% if already_following?(user.id) %>
+  	<a class="btn btn-primary-outline btn-sm" data-remote="true" rel="nofollow" data-method="post" href="<%= unfollow_path(user_id: user.id) %>"><span class="icon icon-add-user">&nbsp; Unfollow (<%= user.followers.count %>)</span></a>
   <% else %>
-    <%= link_to 'Follow', follow_path(user_id: why.user.id), remote: true, method: :post %>
+  	<a class="btn btn-primary-outline btn-sm" data-remote="true" rel="nofollow" data-method="post" href="<%= follow_path(user_id: user.id) %>"><span class="icon icon-add-user">  &nbsp; Follow (<%= user.followers.count %>)</span></a>
   <% end %>
-  (<%= why.user.followers.count %>)
+
 </div>

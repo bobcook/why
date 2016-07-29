@@ -7,9 +7,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      redirect_to @post.ask_why, notice: 'Post was successfully created.'
+      redirect_to root_path, notice: 'Post was successfully created.'
     else
-      render :new
+      redirect_to root_path
     end
   end
 

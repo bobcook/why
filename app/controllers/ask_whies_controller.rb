@@ -1,13 +1,13 @@
 class AskWhiesController < ApplicationController
   include AskWhiesHelper
   before_action :set_ask_why, only: [:show, :edit, :update, :destroy, :like, :dislike, :super_like, :reshare]
-
+  
   def create
     @ask_why = current_user.ask_whies.new(ask_why_params)
     if @ask_why.save
-      redirect_to my_asked_why_ask_whies_path, notice: 'Ask why was successfully created.'
+      redirect_to root_path, notice: 'Ask why was successfully created.'
     else
-      render :new
+      render root_path
     end
   end
 

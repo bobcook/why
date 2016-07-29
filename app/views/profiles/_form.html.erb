@@ -1,63 +1,66 @@
-<%= simple_form_for(@profile) do |f| %>
-  <%= f.error_notification %>
+<div class="container">
+  <%= simple_form_for(@profile) do |f| %>
+    <%= f.error_notification %>
 
-  <div class='col-md-12 profile_image'>
-    <img class='img-preview' style="background-image: url( <%= current_user.user_image(:medium) %> )"></img>
+    <div class='col-md-12 profile_image'>
+      <img class='img-preview' style="background-image: url( <%= current_user.user_image(:medium) %> )"></img>
+      <br>
+      <img class='change_image' src='/assets/camera-icon.png' data-toggle="tooltip" data-placement="right" title='Click to change image'></img>
+    </div>
     <br>
-    <img class='change_image' src='/assets/camera-icon.png' data-toggle="tooltip" data-placement="right" title='Click to change image'></img>
-  </div>
-  <br><br>
 
-  <div class="form-inputs">
-    <div class='row'>
-      <div class='col-md-6'>
-        <%= email_field_tag 'email', current_user.email, readonly: true, placeholder: 'Email' %>
+    <div class="form-inputs">
+      <div class='row'>
+        <div class='col-md-6'>
+          <%= email_field_tag 'email', current_user.email, readonly: true, placeholder: 'Email' , class: "form-control" %>
+        </div>
+
+        <div class='col-md-6'>
+          <%= text_field_tag 'user[username]', current_user.username, placeholder: 'Username', class: 'form-control' %>
+        </div>
       </div>
-      <div class='col-md-6'>
-        <%= text_field_tag 'user[username]', current_user.username, placeholder: 'Username', class: 'form-control' %>
+      <br />
+      <div class='row'>
+        <div class='col-md-6'>
+          <%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
+        </div>
+        <div class='col-md-6'>
+          <%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
+        </div>
+      </div>
+      <br />
+      <div class='row'>
+        <div class='col-md-6'>
+          <%= f.text_field :contact, maxlength: 10, placeholder: 'Contact number', class: 'form-control' %>
+        </div>
+        <div class='col-md-6'>
+          <%= f.text_field :city, placeholder: 'City', class: 'form-control' %>
+        </div>
+      </div>
+      <br />
+      <div class='row'>
+        <div class='col-md-12'>
+          <%= f.text_area :bio, placeholder: 'Short description about yourself...', class: 'form-control' %>
+        </div>
+      </div>
+      <br />
+      <div class='row'>
+        <div class='col-md-12'>
+          <%= f.text_area :interests, placeholder: 'Interest', class: 'form-control' %>
+        </div>
+      </div>
+      <br />
+      <div class='row'>
+        <div class='col-md-6'>
+          <%= f.file_field :image, onchange: "showimagepreview(this)", accept: "image/*", class: 'hide' %>
+        </div>
       </div>
     </div>
-
-    <div class='row'>
-      <div class='col-md-6'>
-        <%= f.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
-      </div>
-      <div class='col-md-6'>
-        <%= f.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
-      </div>
+    <br />
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn btn-primary' %>
     </div>
-
-    <div class='row'>
-      <div class='col-md-6'>
-        <%= f.text_field :contact, maxlength: 10, placeholder: 'Contact number', class: 'form-control' %>
-      </div>
-      <div class='col-md-6'>
-        <%= f.text_field :city, placeholder: 'City', class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-md-12'>
-        <%= f.text_area :bio, placeholder: 'Short description about yourself...', class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-md-12'>
-        <%= f.text_area :interests, placeholder: 'Interest', class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-md-6'>
-        <%= f.file_field :image, onchange: "showimagepreview(this)", accept: "image/*", class: 'hide' %>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  </div>
-<% end %>
-<br>
-<%= link_to 'Change password', edit_user_registration_path %>
+  <% end %>
+  <br>
+  <%= link_to 'Change password', edit_user_registration_path %>
+</div>

@@ -1,13 +1,20 @@
-<%= simple_form_for(@ask_why) do |f| %>
-  <%= f.error_notification %>
-
-  <div class='row'>
-    <%= f.text_area :question, class: 'form-control count_length', rows: 3, placeholder: 'Look-up for your why?', maxlength: 100 %>
-    <span class='char-left'>Character left: &nbsp<b><span class='char-length'>100</span></b></span>
-    <span class='error-msg text-left'></span>
+<li class="media list-group-item p-a">
+	<%= simple_form_for(@ask_why) do |f| %>
+		<%= f.error_notification %>
+  	<div class="input-group">
+     	<%= f.text_field :question, class: 'form-control count_length', placeholder: 'Look-up for your why?', maxlength: 100 %>
+      <!-- <span class='char-left'>Character left: &nbsp<b><span class='char-length'>100</span></b></span>
+  		<span class='error-msg text-left'></span> -->
+    	<div class="input-group-btn">
+      	<button type="button" class="btn btn-default">
+        	<span class="icon icon-camera"></span>
+      	</button> 	
+      	<%= f.button :submit, class: 'btn btn-primary' %>
+    	</div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary' %>
+  <div id="why_error_message">
+    <span></span>
   </div>
-<% end %>
+</li>
+
