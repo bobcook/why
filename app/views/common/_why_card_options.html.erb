@@ -1,12 +1,13 @@
 <div class='options why_card_<%= why.id %>'>
-  <%= link_to (why_likes(why)), like_ask_why_path(why), remote: true %>&nbsp
-  <%= why.likes.count %>
+<ul>
+  <li><%= link_to image_tag('/assets/icon-one.png') + (why_likes(why)), like_ask_why_path(why), remote: true %><br>
+  <span><%= why.likes.count %></span></li>
 
-  <%= link_to (why_dislikes(why)), dislike_ask_why_path(why), remote: true %>&nbsp
-  <%= why.dislikes.count %>
+ <li><%= link_to image_tag('/assets/icon-two.png') + (why_dislikes(why)), dislike_ask_why_path(why), remote: true %><br>
+  <span><%= why.dislikes.count %></span></li>
 
-  <%= link_to (why_super_likes(why)), super_like_ask_why_path(why), remote: true %>&nbsp
-  <%= why.super_likes.count %>
+  <li><%= link_to image_tag('/assets/icon-three.png')+(why_super_likes(why)), super_like_ask_why_path(why), remote: true %><br>
+  <span><%= why.super_likes.count %></span></li>
 
-  <%= link_to (why.reshare.include?(current_user.id.to_s) ? 'Shared' : 'Reshare'), reshare_ask_why_path(why), remote: true %>
+  <li><%= link_to image_tag('/assets/icon-four.png') + (why.reshare.include?(current_user.id.to_s) ? 'Shared' : 'Reshare'), reshare_ask_why_path(why), remote: true %></li>
 </div>

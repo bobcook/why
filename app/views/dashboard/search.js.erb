@@ -1,1 +1,5 @@
-$('.container').html("<%= escape_javascript render partial: 'dashboard/search_result' %>")
+$('#ask_whies li').not(':first-child').remove('li')
+$('#ask_whies').append("<%= escape_javascript render partial: 'dashboard/search_result' %>")
+$(function () {
+  $('[data-grid="images"]').imageGrid()
+})

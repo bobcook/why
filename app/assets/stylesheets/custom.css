@@ -16,11 +16,36 @@ body {
   background-color: #fff;
   border-color: #d3e0e9;
 }
-
-.why_card_options {
-  display: inline-flex;
+.left-section {
+    float: left;
+    margin-right: 20px;
+    width: 58px;
 }
-
+.why_card_options {
+  display: block;
+  margin-top: 50%;
+}
+.why_card_options ul {
+    font-size: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.why_card_options li {
+  display: block;
+  padding-bottom: 5px;
+}
+.why_card_options li a img {
+  max-width: 62%;
+}
+.why_card_options li span{
+  display: block;
+  }
+.why_card_options ul li a {
+  text-decoration: none;
+  color: #333;
+}
 /* general overrides */
 .list-group-item .glyphicon {
   line-height: 1.4;
@@ -72,7 +97,7 @@ body {
 /* misc */
 .app-login-form {
   max-width: 280px;
-  margin-top: -60px;
+  margin-top: 0px;
 }
 .app-new-msg {
   margin-right: 10px;
@@ -84,3 +109,29 @@ body {
 .app-brand img {
   width: 100%;
 }
+
+
+/*For file browse*/
+.image-preview-input {
+    position: relative;
+  overflow: hidden;
+  margin: 0px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.image-preview-input input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+/*end*/

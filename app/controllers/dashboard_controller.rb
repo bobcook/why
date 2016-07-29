@@ -1,12 +1,12 @@
 class DashboardController < ApplicationController
-
+	include DashboardHelper
+	skip_before_filter :verify_authenticity_token, only: [:search]
   def home
-  	@body_class = 'with-top-navbar'
-  	@ask_why = AskWhy.new
-  	@ask_whies = AskWhy.all
+  	homepage
   end
 
   def search
-    @wishes = search_query(params[:query])
+    @ask_whies = search_query(params[:query])
+    @post = Post.new
   end
 end

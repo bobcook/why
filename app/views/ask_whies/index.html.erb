@@ -1,66 +1,52 @@
 <% @ask_whies.each do |why| %>
   <li class="media list-group-item p-a">
-  <a class="media-left" href="#">
-  <%= image_tag(why.user.user_image(:original), class: 'media-object img-circle') %>
-  </a>
-  <div class="media-body">
-    <div class="media-heading">
-      <small class="pull-right text-muted">4 min</small>
-      <h5><%= why.user.full_name %></h5>
-    </div>
-
-    <p><%= why.question %></p>
-
-    <div class="media-body-inline-grid" data-grid="images">
-      <div style="display: none">
-        <img data-action="zoom" data-width="1050" data-height="700" src="/assets/unsplash_1.jpg">
-      </div>
-
-      <div style="display: none">
-        <img data-action="zoom" data-width="640" data-height="640" src="/assets/instagram_1.jpg">
-      </div>
-
-      <div style="display: none">
-        <img data-action="zoom" data-width="640" data-height="640" src="/assets/instagram_13.jpg">
-      </div>
-
-      <div style="display: none">
-        <img data-action="zoom" data-width="1048" data-height="700" src="/assets/unsplash_2.jpg">
-      </div>
-    </div>
-    <div class="why_card_options">
-      <% unless created_by_user?(why.user) %>
+  <div class="left-section">
+    <a class="media-left" href="<%= profile_path(why.user)%>">
+      <%= image_tag(why.user.user_image(:original), class: 'media-object img-circle') %>
+    </a>
+       <div class="why_card_options">
+        <% unless created_by_user?(why.user) %>
         <%= render partial: 'common/why_card_options', locals: { why: why } %>&nbsp;
-        <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
-          <%= link_to 'Reply', ask_why_path(why) %>&nbsp;
-          <%= why.posts.count %>
+          <% unless params[:controller] == "ask_whies" && params[:action] == "show" %>
+          <ul>
+          <li>
+            <%= link_to 'Reply', "#-" %>
+            <span><%= why.posts.count %></span></li>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-    <ul class="media-list m-b">
-      <li class="media">
-        <a class="media-left" href="#">
-          <img
-            class="media-object img-circle"
-            src="/assets/avatar-fat.jpg">
-        </a>
-        <div class="media-body">
-          <strong>Jacon Thornton: </strong>
-          Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
+    <div class="media-body">
+      <div class="media-heading">
+        <small class="pull-right text-muted">
+          <%= time_ago_in_words(why.created_at) %>
+          <%= link_to "delete",ask_why_path(why), method: :delete if created_by_user? why.user %>
+          <%= link_to "edit",edit_ask_why_path(why) if created_by_user? why.user %>
+        </small>
+        <h5><%= why.user.full_name %></h5>
+      </div>
+      <p><%= why.question %></p>
+      <div class="media-body-inline-grid" data-grid="images">
+        <div style="display: none">
+          <img data-action="zoom" data-width="1050" data-height="700" src="/assets/unsplash_1.jpg">
         </div>
-      </li>
-      <li class="media">
-        <a class="media-left" href="#">
-          <img
-            class="media-object img-circle"
-            src="/assets/avatar-mdo.png">
-        </a>
-        <div class="media-body">
-          <strong>Mark Otto: </strong>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+
+        <div style="display: none">
+          <img data-action="zoom" data-width="640" data-height="640" src="/assets/instagram_1.jpg">
         </div>
-      </li>
-    </ul>
-  </div>
+
+        <div style="display: none">
+          <img data-action="zoom" data-width="640" data-height="640" src="/assets/instagram_13.jpg">
+        </div>
+
+        <div style="display: none">
+          <img data-action="zoom" data-width="1048" data-height="700" src="/assets/unsplash_2.jpg">
+        </div>
+      </div>
+      <ul class="media-list m-b">
+        <%= render partial: 'posts/form' ,locals: {why: why} %>
+        <%= render template: "posts/index" , locals: {why: why} %>
+      </ul>
+    </div>
   </li>
 <% end %>

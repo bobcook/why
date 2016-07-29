@@ -8,15 +8,15 @@
     <%= stylesheet_link_tag :application, media: "all" %>
     <%= csrf_meta_tags %>
   </head>
-
-  <header>
-    <%= render 'common/header' %>
-  </header>
+  <% if user_signed_in? %>
+    <header>
+      <%= render 'common/header' %>
+    </header>
+  <% end %>
 
   <body class="<%= @body_class %>">
       <%= render "flashes" -%>
       <%= yield %>
-
 
     <%= render "javascript" %>
     <%= render "css_overrides" %>

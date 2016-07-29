@@ -1,21 +1,30 @@
-<h2>Change your password</h2>
-
-<div class="col-md-4">
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<div class="container-fluid container-fill-height">
+  <div class="container-content-middle">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put,class: "m-x-auto text-center app-login-form" }) do |f| %>
     <%= f.error_notification %>
+      <a href="../index.html" class="app-brand m-b-lg">
+        <img src="/assets/brand.png" alt="brand">
+      </a>
+      <div class="form-group">
+        <%= f.input :reset_password_token, as: :hidden %>
+        <%= f.full_error :reset_password_token %>
+      </div>
 
-    <%= f.input :reset_password_token, as: :hidden %>
-    <%= f.full_error :reset_password_token %>
+      <div class="form-group">
+        <%= f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { class: 'form-control'} %>
+      </div>
 
-    <div class="form-inputs">
-      <%= f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { class: 'form-control'} %>
-      <%= f.input :password_confirmation, label: "Confirm your new password", required: true, input_html: { class: 'form-control'} %>
-    </div>
+      <div class="form-group">
+       <%= f.input :password_confirmation, label: "Confirm your new password", required: true, input_html: { class: 'form-control'} %>
+      </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Change my password", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
 
-  <%= render "users/shared/links" %>
+      <div class="m-b-lg">
+        <%= f.button :submit, "Change my password", class: 'btn btn-primary' %>
+      </div>
+      <footer class="screen-login">
+        <%= render "users/shared/links" %>
+      </footer>
+    <% end %>
+  </div>
 </div>
