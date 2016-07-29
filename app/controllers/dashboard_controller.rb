@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
   end
 
   def search
-    @ask_whies = search_query(params[:query])
+    @ask_whies = search_query(params[:query].downcase)
     @post = Post.new
   end
 end
