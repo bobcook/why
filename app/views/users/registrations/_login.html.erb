@@ -1,0 +1,21 @@
+ <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "m-x-auto text-center app-login-form login"} ) do |f| %>
+      <a href="../index.html" class="app-brand m-b-lg">
+        <img src="/assets/brand.png" alt="brand">
+      </a>
+      <div class="form-group">
+        <%= f.input :email, required: false, label: false, autofocus: true, placeholder: 'Enter your email...', input_html: { class: 'form-control'} %>
+      </div>
+
+      <div class="form-group m-b-md">
+        <%= f.input :password, required: false, label: false, placeholder: 'Enter your password...', input_html: { class: 'form-control'} %>
+      </div>
+
+      <div class="m-b-lg">
+        <%= f.button :submit, "Log In", class: 'btn btn-primary' %>
+        <a href="register.html" rel="register" class="linkform btn btn-default">Sign Up</a>
+      </div>
+      <footer class="screen-login">
+      	<a href="forgot_password.html" rel="forgot_password" class="forgot text-muted linkform">Forgot Password?</a>
+        <a href="confirmations.html" rel="confirmations" class="linkform text-muted">Didn't receive confirmation instructions?</a>
+      </footer>
+    <% end %>

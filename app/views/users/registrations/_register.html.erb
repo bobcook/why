@@ -1,0 +1,26 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "m-x-auto text-center app-login-form register active"}) do |f| %>
+      <a href="../index.html" class="app-brand m-b-lg">
+        <img src="/assets/brand.png" alt="brand">
+      </a>
+      <div class="form-group">
+       <%= f.input :email, required: true, label: false, autofocus: true, placeholder: 'Email', input_html: { class: 'form-control'} %>
+      </div>
+
+      <div class="form-group m-b-md">
+        <%= f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'form-control'}, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      </div>
+      <div class="form-group m-b-md">
+        <%= f.input :password_confirmation, required: true, label: false, placeholder: 'Password Confirmation', input_html: { class: 'form-control'} %>
+      </div>
+
+      <div class="m-b-lg">
+        <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+        <a href="login-form.html" rel="login" class="linkform btn btn-default">Log In</a></br>
+    
+        <%#= link_to "Log in", new_session_path(resource_name), class: "btn btn-default" %>
+      </div>
+      <footer class="screen-login">
+        <a href="confirmations.html" rel="confirmations" class="linkform text-muted">Didn't receive confirmation instructions?</a>
+        <%= render "users/shared/links" %>
+      </footer>
+    <% end %>
