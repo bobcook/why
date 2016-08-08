@@ -36,7 +36,7 @@
           </li>
           <li>
             <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
-              <%= image_tag(current_user.user_image(:thumb), class: 'img-circle') if user_signed_in? %>
+              <%= image_tag(current_user.user_profile_image, class: "img-circle") if current_user%>
             </button>
           </li>
         </ul>

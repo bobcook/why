@@ -320,16 +320,13 @@
       <div class="panel panel-default panel-profile m-b-md">
         <div class="panel-heading" style="background-image: url(/assets/iceland.jpg);"></div>
         <div class="panel-body text-center">
-          <a href="profile/index.html">
-            <%= image_tag(current_user.user_image(:thumb), class: 'panel-profile-img') %>
-          </a>
-
+          <%= link_to current_user.profile do %>
+            <%= image_tag(current_user.user_profile_image,class: 'panel-profile-img') %>
+          <%end%>
           <h5 class="panel-title">
             <a class="text-inherit" href="profile/index.html"><%= current_user.full_name%></a>
           </h5>
-
           <p class="m-b-md"><%= current_user.profile.bio %></p>
-
           <ul class="panel-menu">
             <li class="panel-menu-item">
               <a href="#userModal" class="text-inherit" data-toggle="modal">
