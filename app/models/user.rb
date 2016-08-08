@@ -38,6 +38,10 @@ class User < ApplicationRecord
     profile.image.url(type)
   end
 
+  def user_profile_image
+    profile.image_file_name.nil? ? "default.png" : profile.image.url
+  end
+
   def user_profile
     build_profile.save
   end

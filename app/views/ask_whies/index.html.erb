@@ -1,9 +1,11 @@
 <% @ask_whies.each do |why| %>
   <li class="media list-group-item p-a">
   <div class="left-section">
-    <a class="media-left" href="<%= profile_path(why.user)%>">
-      <%= image_tag(why.user.user_image(:original), class: 'media-object img-circle') %>
-    </a>
+    <div class="media-left">
+      <%= link_to profile_path(why.user) do %>
+        <%= image_tag(why.user.user_profile_image,class: "img-circle",style: "width: 100%;")%>
+      <%end%>
+    </div>
        <div class="why_card_options">
         <% unless created_by_user?(why.user) %>
         <%= render partial: 'common/why_card_options', locals: { why: why } %>&nbsp;
